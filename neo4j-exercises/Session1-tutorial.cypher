@@ -1,4 +1,4 @@
-// 1vHow many calls were missed in May?
+// 1 How many calls were missed in May?
 
 MATCH (c:Call{duration: 0})
 WHERE c.from.month = 5
