@@ -1,0 +1,53 @@
+query {
+  people {
+    id
+    name
+    children {
+      name
+    }
+  }
+}
+
+query {
+  people(where: {id: 4}) {
+    id
+    name
+    children {
+      name
+    }
+  }
+}
+
+query {
+  people(where: {id_IN: [4, 25]}) {
+    id
+    name
+    children {
+      name
+    }
+  }
+}
+
+query {
+  people(where: {OR: [{id: 4}, {id: 25}]}) {
+    id
+    name
+    children {
+      name
+    }
+  }
+}
+
+query {
+  colleagues(id: 25) {
+    id
+    name
+  }
+}
+
+mutation {
+  createChild(parent1id: 4, parent2id: 25, id: 100, name: "Anita") {
+    id
+    name
+  }
+}
