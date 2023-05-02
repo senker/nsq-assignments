@@ -189,30 +189,6 @@ CREATE (n:Order{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Set Genre to a Book
 MATCH (b:Book), (a:Genre)
 WHERE b.ISBN = '9780575090712' AND a.GenreName='Comedy'
@@ -365,7 +341,7 @@ CREATE (b)-[:HAS_CATEGORY]->(c1);
 //  Set parent categories
 MATCH (pc:Category), (c:Category)
 WHERE pc.CategoryName = 'Cyberpunk' AND c.CategoryName = 'Science Fiction'
-CREATE (c)-[r:SUBCATEGORY_OF]->(pc);
+CREATE (pc)-[r:SUBCATEGORY_OF]->(c);
 
 MATCH (pc:Category), (c:Category)
 WHERE pc.CategoryName = 'Fiction' AND c.CategoryName = 'Science Fiction'
@@ -375,8 +351,9 @@ MATCH (pc:Category), (c:Category)
 WHERE pc.CategoryName = 'Space Opera' AND c.CategoryName = 'Thriller'
 CREATE (pc)-[r:SUBCATEGORY_OF]->(c);
 
-
-
-
-
-
+// Delete relationship
+MATCH (c:Category {CategoryName:'Fiction'})
+-[r:SUBCATEGORY_OF]-
+(ca:Category {CategoryName: 'Science Fiction'})
+DELETE r
+RETURN c, r;
