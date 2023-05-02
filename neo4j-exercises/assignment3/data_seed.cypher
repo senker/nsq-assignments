@@ -1,6 +1,5 @@
 MATCH (v) DETACH DELETE v;
 
-
 // GENRE: 
 CREATE (n:Genre{ GenreName: 'Mystery' });
 CREATE (n:Genre{ GenreName: 'Romance' });
@@ -32,7 +31,6 @@ CREATE (a:Author{
     FullName: 'Nicolae Dabija'
 });
 
-
 // CATEGORY:
 CREATE (:Category{
     CategoryName: 'Cyberpunk'
@@ -52,7 +50,6 @@ CREATE (:Category{
 CREATE (:Category{
     CategoryName: 'Space Opera'
 })
-
 
 // PUBLISHER:
 CREATE (p:Publisher{
@@ -171,22 +168,6 @@ CREATE (n:Order{
     OrderDate: date({year: 2023, month: 1, day: 24}),
     DeliveryAddress: 'Plantagen 5, Vejle'
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Set Genre to a Book
